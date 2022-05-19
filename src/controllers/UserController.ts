@@ -1,41 +1,44 @@
-type UserType = {}
-type QueryParamsType = {}
+import { UserType } from '../@types/users';
 
 class UserController {
-    /**
-     * @param { UserType } user - Recieves all user infos
-        @returns {UserType}
-     */
+
     async store(user: UserType): Promise<UserType> {
-        return 'user'
+       
     }
-    
-    /**
-     * 
-     * @param id 
-        @returns {UserType}
-     */
+
+
     async update(id: String, params = {}): Promise<UserType> {
+        
+
         return 'newuser'
     }
 
-    /**
-     * 
-     * @param { String } id
-     * @returns {UserType}
-     */
+
     async delete(id: String): Promise<UserType> {
+
+
         return 'deleted user'
     }
-    /**
-     * @param {QueryParamsType} query
-     * @returns {UserType} 
-     */
+
+
     async show(query: QueryParamsType): Promise<UserType> {
+        try {
+            
+        } catch (error) {
+            
+        }
+
         return 'user'
     }
 
+    async follow(id: String) {
 
+
+    }
+    async unfollow(id: String) {
+
+
+    }
 }
 
 export default new UserController;
