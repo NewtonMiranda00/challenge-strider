@@ -1,13 +1,12 @@
-import type { NextPage } from 'next'
-// import Head from 'next/head'
-// import Image from 'next/image'
+import type { NextPage } from "next";
+import { NavBar } from "../components/Navbar";
 
 const Home: NextPage = () => {
   return (
-    <div className={''}>
-      <h1>Hello World</h1> 
-    </div>
-  )
-}
+    <>
+      <NavBar />
+    </>
+  );
+};
 
-export default Home
+export default Home;
