@@ -1,4 +1,4 @@
-import { UserType } from './../../@types/users/index';
+import { UserType } from 'types/users'
 import { Schema, model, models } from 'mongoose'
 
 const UserSchema = new Schema<UserType>({
@@ -17,7 +17,7 @@ const UserSchema = new Schema<UserType>({
     profile: {
         bio: {
             type: String,
-            default: []
+            default: ''
         }
     },
     followers: {

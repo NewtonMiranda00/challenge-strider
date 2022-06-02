@@ -3,11 +3,11 @@ import { PostType } from "../posts"
 
 export type UserType = {
     _id?: ObjectId
-    email: String
-    name: String
+    email: string
+    name: string
     posts: PostType[]
     profile: {
-        bio: String
+        bio: string
     }
     following: UserType[]
     followers: UserType[]

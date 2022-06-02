@@ -1,7 +1,7 @@
-import { UserType } from '../../../../../@types/users/index';
+import { UserType } from 'types/users'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../../../database/dbConnect';
-import User from '../../../../../database/schemas/User';
+import dbConnect from '@services/database/dbConnect';
+import User from '@services/database/schemas/User';
 import { getSession } from 'next-auth/react';
 
 type ResponseSuccess = {

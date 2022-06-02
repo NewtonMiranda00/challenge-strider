@@ -1,11 +1,12 @@
-import { UserType } from '../../../../../@types/users/index';
+import { PostType } from 'types/posts';
+import { UserType } from 'types/users'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../../../database/dbConnect';
-import User from '../../../../../database/schemas/User';
+import dbConnect from '@services/database/dbConnect';
+import User from '@services/database/schemas/User';
 import { getSession } from 'next-auth/react';
 
 type ResponseSuccess = {
-    user: UserType;
+    posts: PostType[];
 }
 
 type ResponseError = {
@@ -21,10 +22,10 @@ export default async function handler(
         return res.status(402).json({ error: "Not Authorized" });
     }
     switch (req.method) {
-        case 'POST':
+        case 'GET':
             try {
                 await dbConnect();
-                //CREATE A USER POST
+                //GET ALL USERS POST
             } catch (error) {
                 res.json({ error })
             }
