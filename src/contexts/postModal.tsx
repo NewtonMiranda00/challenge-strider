@@ -1,26 +1,23 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
-
-interface ModalProviderProps {
-    children: ReactNode;
-}
+import { createContext, Dispatch, ReactNode, SetStateAction } from "react";
 
 interface ModalContextData {
     isModalOpen: boolean;
     setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
+interface ModalProviderProps extends ModalContextData {
+    children: ReactNode;
+}
 
-export const ModalContext = createContext({} as ModalContextData);
+export const PostModalContext = createContext({} as ModalContextData);
 
-export function ModalProvider({children}: ModalProviderProps) {
-
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+export function ModalProvider({children, isModalOpen, setIsModalOpen}: ModalProviderProps) {
 
     const data = {isModalOpen, setIsModalOpen}
 
     return (
-        <ModalContext.Provider value={data}>
+        <PostModalContext.Provider value={data}>
             {children}
-        </ModalContext.Provider>
+        </PostModalContext.Provider>
     )
 
 }

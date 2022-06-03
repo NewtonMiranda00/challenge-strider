@@ -1,18 +1,18 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
-import { ModalProvider, ModalContext } from "../contexts/postModal";
-import Modal from "react-modal";
-import { useContext } from "react";
+import { ModalProvider, PostModalContext } from "../contexts/postModal";
+import { useState } from "react";
+import { PostModal } from "../components/PostModal";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  const { isModalOpen } = useContext(ModalContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <SessionProvider session={session}>
-      <ModalProvider>
+      <ModalProvider isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
         <Component {...pageProps} />
-        <Modal isOpen={isModalOpen} />
+        <PostModal isOpen={isModalOpen}/>
       </ModalProvider>
     </SessionProvider>
   );
