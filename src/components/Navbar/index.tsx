@@ -2,10 +2,13 @@ import { Button } from "../button";
 import { LogoutButton } from "../button/LogOut";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { ModalContext } from "../../contexts/postModal";
 import Link from "next/link";
+import { useContext } from "react";
 
 export function NavBar() {
   const { data: session } = useSession();
+  const {isModalOpen, setIsModalOpen} = useContext(ModalContext);
 
   return (
     <nav className="flex items-center justify-center flex-wrap bg-lightGray p-3">
@@ -20,7 +23,7 @@ export function NavBar() {
           <div className="flex gap-4 items-center">
             <div className="flex gap-4">
               <LogoutButton onClick={() => signOut()} />
-              <Button>New Post</Button>
+              <Button onClick={() => {setIsModalOpen(true); console.log(isModalOpen)}}>New Post</Button>
             </div>
             <Link href={`/user/${session.user?.name}`}>
               <a>
