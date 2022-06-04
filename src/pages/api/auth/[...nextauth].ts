@@ -11,14 +11,7 @@ type UserLoginType = {
 }
 
 const check_if_user_exists_on_db = async (user_query: UserLoginType) => {
-  const { id: user_id, name }: UserLoginType = user_query
-  const { data: { user } } = await api.get(`/user/show/${user_id}`)
-  if (user !== []) {
-    return true
-  } else {
-    await api.post(`/user/store`, { user_id, name })
-    return true
-  }
+
 }
 
 const options = {
@@ -32,7 +25,14 @@ const options = {
   callbacks: {
     //@ts-ignore
     async signIn({ user }) {
-      return check_if_user_exists_on_db(user);
+      const { id: user_id, name }: UserLoginType = user
+      const { data } = await api.get(`/user/show/${user_id}`)
+      if (data.user !== []) {
+        return true
+      } else {
+        await api.post(`/user/store`, { user_id, name })
+        return true
+      }
     },
   }
 }
