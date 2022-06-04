@@ -16,7 +16,27 @@ export function PostModal({ isOpen }: PostModalProps) {
       isOpen={isOpen}
       shouldCloseOnEsc
       shouldCloseOnOverlayClick
-      className="max-w-lg bg-lightGray absolute inset-0"
+      style={{
+        overlay: {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "#353431a2",
+        },
+        content: {
+          maxWidth: "45rem",
+          maxHeight: "50rem",
+          position: "absolute",
+          left: 0,
+          right: 0,
+          margin: "auto",
+          backgroundColor: "#353431",
+          border: "none",
+          boxShadow: "#0000008b 0px 0px 6px 0px",
+        },
+      }}
     >
       <form>
         <button onClick={() => setIsModalOpen(false)}>close modal</button>
