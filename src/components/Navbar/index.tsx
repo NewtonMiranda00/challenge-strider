@@ -37,7 +37,9 @@ export function NavBar() {
             </Link>
           </div>
         ) : (
-          <Button onClick={() => signIn("github")}>Log In</Button>
+          <Button onClick={() => {
+            signIn("github")
+            }}>Log In</Button>
         )}
       </div>
     </nav>

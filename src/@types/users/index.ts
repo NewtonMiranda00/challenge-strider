@@ -3,7 +3,7 @@ import { PostType } from "../posts"
 
 export type UserType = {
     _id?: ObjectId
-    email: string
+    user_id: string
     name: string
     posts: PostType[]
     profile: {

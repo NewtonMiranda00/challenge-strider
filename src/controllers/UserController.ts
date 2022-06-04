@@ -2,7 +2,7 @@ import User from '@services/database/schemas/User';
 import { UserType } from 'types/users'
 
 type UserInfo = {
-    email?: string;
+    user_id?: string;
     name?: string;
 }
 
@@ -39,12 +39,12 @@ class UserController {
     }
 
     async show(query: UserInfo): Promise<UserType[]> {
-        const users: UserType[] = await User.find(query);
+        const users: UserType[] = await User.find(query, {_id: 0});
         return users
     }
 
-    async showId(_id: string | string[]): Promise<UserType> {
-        const user: UserType | null = await User.findById(_id);
+    async showId(id: string | string[]): Promise<UserType[]> {
+        const user: UserType[] | null = await User.find({id: id}, {_id: 0});
         if (!user) {
             throw 'User Id not found in DB'
         }

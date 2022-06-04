@@ -2,7 +2,7 @@ import { UserType } from 'types/users'
 import { Schema, model, models } from 'mongoose'
 
 const UserSchema = new Schema<UserType>({
-    email: {
+    user_id: {
         type: String,
         required: true
     },

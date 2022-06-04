@@ -25,9 +25,9 @@ export default async function handler(
         case 'POST':
             try {
                 await dbConnect();
-                const {email, name}: UserType = req.body
+                const {user_id, name}: UserType = req.body
 
-                const user: UserType = await UserController.store({email, name})
+                const user: UserType = await UserController.store({user_id, name})
 
                 return res.json({ user })
             } catch (error) {

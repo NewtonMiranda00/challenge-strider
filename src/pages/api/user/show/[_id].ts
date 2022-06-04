@@ -5,7 +5,7 @@ import { getSession } from 'next-auth/react';
 import UserController from '@controllers/UserController';
 
 type ResponseSuccess = {
-    user: UserType;
+    user: UserType[];
 }
 
 type ResponseError = {
@@ -27,7 +27,7 @@ export default async function handler(
 
                 const {_id} = req.query
 
-                const user: UserType = await UserController.showId(_id);
+                const user: UserType[] = await UserController.showId(_id);
                 
                 if(!user) return res.json({error: "Error trying to find users in DB"})
                 
