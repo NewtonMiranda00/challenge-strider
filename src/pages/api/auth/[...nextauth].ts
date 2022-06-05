@@ -10,10 +10,6 @@ type UserLoginType = {
   image: string
 }
 
-const check_if_user_exists_on_db = async (user_query: UserLoginType) => {
-
-}
-
 const options = {
   providers: [
     GitHubProvider({
