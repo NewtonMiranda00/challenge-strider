@@ -23,12 +23,10 @@ const options = {
     async signIn({ user }) {
       const { id: user_id, name }: UserLoginType = user
       const { data } = await api.get(`/user/show/${user_id}`)
-      if (data.user !== []) {
-        return true
-      } else {
+      if (data.user === []) {
         await api.post(`/user/store`, { user_id, name })
-        return true
       }
+      return true;
     },
   }
 }
