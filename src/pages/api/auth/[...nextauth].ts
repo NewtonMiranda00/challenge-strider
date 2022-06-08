@@ -1,16 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
-import Auth0Provider from "next-auth/providers/auth0";
+import GitHubProvider from "next-auth/providers/github";
 
 const options = {
   providers: [
-    Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID!,
-      clientSecret: process.env.AUTH0_CLIENT_SECRET!,
-      issuer: process.env.AUTH0_ISSUER_BASE_URL!,
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      authorization: { params: { scope: "read:user" } },
     }),
   ],
-};
-
+}
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
   NextAuth(req, res, options);
+
