@@ -10,6 +10,7 @@ const options = {
       issuer: process.env.AUTH0_ISSUER_BASE_URL!,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET
 };
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
