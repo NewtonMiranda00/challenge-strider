@@ -2,13 +2,14 @@ import { ObjectId } from "mongoose"
 import { PostType } from "../posts"
 
 export type UserType = {
-    _id?: ObjectId
-    user_id: string
-    name: string
-    posts: PostType[]
+    _id?: ObjectId;
+    createdAt: Date;
+    email: string;
+    name: string;
+    posts: ObjectId[] | PostType[];
     profile: {
-        bio: string
-    }
-    following: UserType[]
-    followers: UserType[]
+        bio: string;
+    };
+    following: ObjectId[] | UserType[];
+    followers: ObjectId[] | UserType[];
 }

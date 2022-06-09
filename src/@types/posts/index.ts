@@ -1,10 +1,13 @@
-import { UserType } from "../users.
+import { ObjectId } from 'mongoose';
+import { UserType } from '../users';
 
 export type PostType = {
-    id: String
-    createdAt: Date
-    title: String
-    published: Boolean
-    author: UserType
-    authorId: String
+    _id?: ObjectId;
+    createdAt: Date;
+    published: Boolean;
+    filed: Boolean;
+    author: ObjectId | UserType;
+    text: string;
+    likes: Number;
+    rePost: ObjectId | PostType;
 }

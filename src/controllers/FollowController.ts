@@ -7,7 +7,6 @@ class FollowController {
 
     async unfollow(follower_id: String, session_user: String) {
 
-
     }
 }
 

@@ -1,17 +1,13 @@
-import { UserType } from 'types/users'
-import { Schema, model, models } from 'mongoose'
+import { UserType } from 'types/users';
+import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema<UserType>({
-    user_id: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
     },
     posts: {
-        type: Schema.Types.ObjectId,
+        type: [ Schema.Types.ObjectId ],
         ref: 'Post'
     },
     profile: {
@@ -21,13 +17,15 @@ const UserSchema = new Schema<UserType>({
         }
     },
     followers: {
-        type: [],
-        default: []
+        type: [ Schema.Types.ObjectId ],
+        default: [],
+        ref: 'User'
     },
     following: {
-        type: [],
-        default: []
-    },
+        type: [ Schema.Types.ObjectId ],
+        default: [],
+        ref: 'User'
+    }
 }, { timestamps: true });
 
 export default models.User || model<UserType>("User", UserSchema);
